@@ -1,35 +1,48 @@
 import "./styles.css";
-
-let person = {
-  name: "Ahmed",
-  age: "24",
-};
-
-const products = [
-  { title: "milk", id: 1 },
-  { title: "tea", id: 2 },
-];
-
-function renderProduct(product) {
-  return <li key={product.id}>{product.title}</li>;
-}
-
-const listItems = products.map(renderProduct);
+import { useState } from "react";
 
 function MyFirstComponent() {
   return (
     <div>
-      <h1 className={person.name === "Ahmed" ? "user" : "staff"}>
-        Hello I'm {person.name}, {person.age} years old
-      </h1>
-      <button onClick={sayHello}>Say Hello to Ahmed</button>
-      <ul>{listItems}</ul>
+      <MyInput></MyInput>
     </div>
   );
 }
 
-function sayHello() {
-  alert("Hello Ahmed");
+function MyInput() {
+  let [name, setname] = useState("");
+  let [email, setemail] = useState("");
+
+  return (
+    <div>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          const bodyParm = {
+            name: name,
+            email: email
+          }
+
+          console.log(bodyParm)
+        }}
+      >
+        <label>Enter Name : </label>
+        <input
+          value={name}
+          onChange={(event) => setname(event.target.value)}
+        ></input>
+        <br></br>
+        <label>Enter Email : </label>
+        <input
+          value={email}
+          onChange={(event) => setemail(event.target.value)}
+        ></input>
+        <br></br>
+
+        <button>Submit</button>
+      </form>
+    </div>
+  );
 }
 
 export default MyFirstComponent;

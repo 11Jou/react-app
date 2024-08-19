@@ -1,10 +1,14 @@
 import "./App.css";
 import MyFirstComponent from "./MyFirstComponent";
+import Article from "./Article";
 
 function App() {
   return (
     <div>
-        <MyFirstComponent/>
+      <MyFirstComponent />
+      <Article name="Ahmed">
+        <h1>Test Childern</h1>
+      </Article>
     </div>
   );
 }
